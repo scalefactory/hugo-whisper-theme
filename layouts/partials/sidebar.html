@@ -1,5 +1,5 @@
 {{$currentNode := .}}
-<div class="docs-menu">
+<div class="workshop-menu">
   <h4>{{ .Section | humanize }}</h4>
   <ul>
     {{ range (where .Site.RegularPages "Section" .Section) sort .Site.RegularPages ".Weight" }}

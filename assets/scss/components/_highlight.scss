@@ -1,0 +1,61 @@
+.highlight {
+    pre {
+        /* padding-right: 75px; */
+        margin-bottom: 0px;
+        border-bottom: medium none;
+        display: grid;
+        overflow-y: hidden;
+        border-left: 0.3rem solid $primary;
+
+        > code {
+            border-radius: 0;
+            display: block;
+            padding: 1rem 1.5rem;
+            white-space: pre;
+        }
+    }
+
+
+    .highlight-copy-btn {
+        height: 2.75em;
+        border: none;
+        border-color: currentcolor rgb(240, 240, 240) rgb(240, 240, 240) $primary;
+        border-style: none solid solid;
+        border-width: medium 1px 1px 0.3rem;
+        border-radius: 0px 0px 5px 5px;
+        margin-bottom: 20px;
+        font-weight: bold;
+        padding: 0px 3em;
+        font-size: 0.7em;
+        line-height: 1.8;
+        text-align: center;
+        cursor: pointer;
+        color: $primary;
+
+        &:hover {
+            background-color: $secondary;
+            color: $white;
+            border-color: currentcolor rgb(240, 240, 240) rgb(240, 240, 240) $secondary;
+        }
+    }
+}
+
+.blink:after {
+    content: '_';
+    padding: 0;
+    margin: 0;
+    color: $secondary;
+    animation: blink-animation 2s steps(2, start) infinite;
+    -webkit-animation: blink-animation 2s steps(2, start) infinite;
+}
+
+@keyframes blink-animation {
+    to {
+        visibility:hidden
+    }
+}
+@-webkit-keyframes blink-animation {
+    to {
+        visibility:hidden
+    }
+}
