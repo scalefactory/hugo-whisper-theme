@@ -83,8 +83,8 @@
       }
 
       function selectText(node) {
-        var selection = window.getSelection();
-        var range = document.createRange();
+        const selection = window.getSelection();
+        const range = document.createRange();
         range.selectNodeContents(node);
         selection.removeAllRanges();
         selection.addRange(range);
@@ -92,14 +92,14 @@
       }
 
       function addCopyButton(containerEl) {
-        var copyBtn = document.createElement("button");
+        const copyBtn = document.createElement("button");
         copyBtn.className = "highlight-copy-btn copy button-outline float-left small text-uppercase";
         copyBtn.textContent = "Copy";
 
-        var codeEl = containerEl.firstElementChild;
-        copyBtn.addEventListener('click', function () {
+        const codeEl = containerEl.firstElementChild;
+        copyBtn.addEventListener('click', () => {
           try {
-            var selection = selectText(codeEl);
+            const selection = selectText(codeEl);
             document.execCommand('copy');
             selection.removeAllRanges();
 
@@ -110,10 +110,15 @@
           }
         });
         containerEl.appendChild(copyBtn);
+
+        // append clearfix
+        const clearFix = document.createElement('div')
+        clearFix.className = 'clearfix'
+        containerEl.parentNode.insertBefore(clearFix, containerEl.nextSibling)
       }
 
       // Add copy button to code blocks
-      var highlightBlocks = document.getElementsByClassName('highlight');
+      const highlightBlocks = document.getElementsByClassName('highlight');
       Array.prototype.forEach.call(highlightBlocks, addCopyButton);
     })();
   </script>
