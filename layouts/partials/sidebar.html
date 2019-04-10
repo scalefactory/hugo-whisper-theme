@@ -3,8 +3,8 @@
   <h4>{{ .Section | humanize }}</h4>
   <ul>
     {{ range (where .Site.RegularPages "Section" .Section) sort .Site.RegularPages ".Weight" }}
-    <li class="{{ if eq .UniqueID $currentNode.UniqueID }}active {{ end }}">
-      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    <li class="{{ if eq .UniqueID $currentNode.UniqueID }}active {{ end }}{{ if eq .Params.break true }}mb-2 {{ end }}">
+      <a href="{{ .Permalink }}" class="copy-url-params">{{ .Title }}</a>
     </li>
     {{ end }}
   </ul>
