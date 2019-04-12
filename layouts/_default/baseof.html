@@ -71,6 +71,10 @@
     (function () {
       'use strict';
 
+      var search = location.search.substring(1);
+      var urlObject = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+      urlObject.full_name = urlObject.full_name.replace(/\+/g, ' ')
+
       if (!document.queryCommandSupported('copy')) {
         return;
       }
@@ -117,12 +121,31 @@
         containerEl.parentNode.insertBefore(clearFix, containerEl.nextSibling)
       }
 
+      function appendUrlParams(linkEl) {
+        linkEl.href += window.location.search
+      }
+
       // Add copy button to code blocks
       const highlightBlocks = document.getElementsByClassName('highlight');
       Array.prototype.forEach.call(highlightBlocks, addCopyButton);
+
+      // append url params
+      const navLinks = document.getElementsByClassName('copy-url-params');
+      Array.prototype.forEach.call(navLinks, appendUrlParams);
+
+      function updateNames(element) {
+        element.innerHTML = element.innerHTML.replace(/&lt;full_name_lisp&gt;/g, lispCase(urlObject.full_name))
+      }
+
+      function lispCase(string) {
+          return string.toLowerCase().replace(/\s/g,'-')
+      }
+
+      // append url params
+      const nameElements = document.getElementsByClassName('name-replace');
+      Array.prototype.forEach.call(nameElements, updateNames);
     })();
   </script>
-
 
 </body>
 
