@@ -81,7 +81,7 @@
 
       var search = location.search.substring(1);
       var urlObject = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
-      urlObject.full_name = urlObject.full_name.replace(/\+/g, ' ')
+      urlObject.workshop_user = urlObject.workshop_user.replace(/\+/g, ' ')
 
       if (!document.queryCommandSupported('copy')) {
         return;
@@ -142,12 +142,12 @@
       Array.prototype.forEach.call(navLinks, appendUrlParams);
 
       function updateNames(element) {
-        element.innerHTML = element.innerHTML.replace(/&lt;full_name_lisp&gt;/g, lispCase(urlObject.full_name))
+        element.innerHTML = element.innerHTML.replace(/&lt;workshop_user_lisp&gt;/g, lispCase(urlObject.workshop_user))
       }
 
       function updateHref(element) {
-        element.href = element.href.replace(/%3Cfull_name_lisp%3E/g, lispCase(urlObject.full_name))
-        element.innerHTML = element.innerHTML.replace(/\<full_name_lisp\>/g, lispCase(urlObject.full_name))
+        element.href = element.href.replace(/%3Cworkshop_user_lisp%3E/g, lispCase(urlObject.workshop_user))
+        element.innerHTML = element.innerHTML.replace(/\<workshop_user_lisp\>/g, lispCase(urlObject.workshop_user))
       }
 
       function lispCase(string) {
