@@ -63,6 +63,14 @@
   <script type="text/javascript" src="{{ $scripts.RelPermalink }}"></script>
   {{ else }}
   <script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
+
+  <script type="text/javascript">
+    var notes = document.querySelectorAll(".private-note");
+
+    Array.prototype.forEach.call(notes, function(note) {
+      note.remove()
+    });
+  </script>
   {{ end }}
 
   {{ partial "google-analytics.html" . }}
