@@ -142,12 +142,12 @@
       Array.prototype.forEach.call(navLinks, appendUrlParams);
 
       function updateNames(element) {
-        element.innerHTML = element.innerHTML.replace(/&lt;workshop_user_lisp&gt;/g, lispCase(urlObject.workshop_user))
+        element.innerHTML = element.innerHTML.replace(/&lt;workshop_user&gt;/g, lispCase(urlObject.workshop_user))
       }
 
       function updateHref(element) {
-        element.href = element.href.replace(/%3Cworkshop_user_lisp%3E/g, lispCase(urlObject.workshop_user))
-        element.innerHTML = element.innerHTML.replace(/\<workshop_user_lisp\>/g, lispCase(urlObject.workshop_user))
+        element.href = element.href.replace(/%3Cworkshop_user%3E/g, lispCase(urlObject.workshop_user))
+        element.innerHTML = element.innerHTML.replace(/\<workshop_user\>/g, lispCase(urlObject.workshop_user))
       }
 
       function lispCase(string) {
