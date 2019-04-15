@@ -133,10 +133,6 @@
         linkEl.href += window.location.search
       }
 
-      // Add copy button to code blocks
-      const highlightBlocks = document.getElementsByClassName('highlight');
-      Array.prototype.forEach.call(highlightBlocks, addCopyButton);
-
       // append url params
       const navLinks = document.getElementsByClassName('copy-url-params');
       Array.prototype.forEach.call(navLinks, appendUrlParams);
@@ -161,6 +157,9 @@
       const nameElements = document.getElementsByClassName('content');
       Array.prototype.forEach.call(nameElements, updateNames);
 
+      // Add copy button to code blocks
+      const highlightBlocks = document.getElementsByClassName('highlight');
+      Array.prototype.forEach.call(highlightBlocks, addCopyButton);
     })();
   </script>
 
