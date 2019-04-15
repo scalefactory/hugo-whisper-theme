@@ -142,7 +142,7 @@
       Array.prototype.forEach.call(navLinks, appendUrlParams);
 
       function updateNames(element) {
-        element.innerHTML = element.innerHTML.replace(/&lt;workshop_user&gt;/g, lispCase(urlObject.workshop_user))
+        element.innerHTML = element.innerHTML.replace(/&lt;workshop_user&gt;/g, lispCase(urlObject.workshop_user)).replace(/\<workshop_user\>/g, lispCase(urlObject.workshop_user))
       }
 
       function updateHref(element) {
