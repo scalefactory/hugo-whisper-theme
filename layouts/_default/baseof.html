@@ -137,13 +137,22 @@
         element.innerHTML = element.innerHTML.replace(/&lt;full_name_lisp&gt;/g, lispCase(urlObject.full_name))
       }
 
+      function updateHref(element) {
+        element.href = element.href.replace(/%3Cfull_name_lisp%3E/g, lispCase(urlObject.full_name))
+        element.innerHTML = element.innerHTML.replace(/\<full_name_lisp\>/g, lispCase(urlObject.full_name))
+      }
+
       function lispCase(string) {
           return string.toLowerCase().replace(/\s/g,'-')
       }
 
+      const anchors = document.getElementsByTagName('a');
+      Array.prototype.forEach.call(anchors, updateHref);
+
       // append url params
       const nameElements = document.getElementsByClassName('content');
       Array.prototype.forEach.call(nameElements, updateNames);
+
     })();
   </script>
 
