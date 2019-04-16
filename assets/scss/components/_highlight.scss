@@ -6,6 +6,7 @@
         display: grid;
         overflow-y: hidden;
         border-left: 0.3rem solid $primary;
+        border-radius: 5px 5px 0px 0px;
 
         > code {
             border-radius: 0;
