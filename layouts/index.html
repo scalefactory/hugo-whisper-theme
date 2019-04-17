@@ -23,6 +23,19 @@
         <div class="content">
           {{ if .Content }}
           {{ .Content }}
+          <form action="{{ .Site.Params.workshop | relURL}}/" method="GET">
+            <div class="form-row align-items-center justify-content-center">
+              <div class="col-auto">
+                <label class="sr-only" for="workshop_user">Workshop user</label>
+                <input type="text" class="form-control mb-2" id="workshop_user" name="workshop_user" placeholder="workshopXX" required>
+              </div>
+              <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-2">
+                  To the workshop
+                </button>
+              </div>
+            </div>
+          </form>
           {{ else }}
           <p>{{ .Site.Params.homepage_intro }}</p>
           {{ end }}
