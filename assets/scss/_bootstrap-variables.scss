@@ -35,6 +35,14 @@ $line-height-base: 1.4;
 // Headings & Paragraph
 $paragraph-color: #333;
 
+$theme-colors: ();
+$theme-colors: map-merge(
+  (
+    'aws-blue': #007dbc,
+  ),
+  $theme-colors
+);
+
 $spacer: 1rem;
 $spacers: ();
 $spacers: map-merge(
