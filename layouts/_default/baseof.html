@@ -67,7 +67,7 @@
   <script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
 
   <script type="text/javascript">
-    var notes = document.querySelectorAll(".private-note");
+    const notes = document.querySelectorAll(".private-note");
 
     Array.prototype.forEach.call(notes, function(note) {
       note.remove()
@@ -81,8 +81,14 @@
     (function () {
       'use strict';
 
-      var search = location.search.substring(1);
-      var urlObject = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+      const search = location.search.substring(1)
+
+      // If we're on the home page with no url params do nothing
+      if (!search) {
+        return;;
+      }
+
+      let urlObject = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
       urlObject.workshop_user = urlObject.workshop_user.replace(/\+/g, ' ')
 
       if (!document.queryCommandSupported('copy')) {
