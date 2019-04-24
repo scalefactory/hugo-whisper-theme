@@ -152,10 +152,18 @@
       function updateHref(element) {
         element.href = element.href.replace(/%3Cworkshop_user%3E/g, lispCase(urlObject.workshop_user))
         element.innerHTML = element.innerHTML.replace(/\<workshop_user\>/g, lispCase(urlObject.workshop_user))
+
+        if (!urlTest().test(element.href)) {
+          element.target = '_blank'
+        }
       }
 
       function lispCase(string) {
-          return string.toLowerCase().replace(/\s/g,'-')
+        return string.toLowerCase().replace(/\s/g,'-')
+      }
+
+      function urlTest(){
+        return new RegExp('/' + window.location.host + '/');
       }
 
       const anchors = document.getElementsByTagName('a');
