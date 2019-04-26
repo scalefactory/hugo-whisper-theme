@@ -123,3 +123,11 @@ body {
       }
   }
 }
+
+.content {
+  a {
+    &.btn {
+      text-decoration: none;
+    }
+  }
+}
