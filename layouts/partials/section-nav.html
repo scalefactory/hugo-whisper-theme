@@ -1,13 +1,13 @@
 {{ if or .PrevInSection .NextInSection }}
     <div class="mt-2 border-top pt-2">
     {{if .NextInSection}}
-        <a class="btn btn-link nounderline" href="{{.NextInSection.Permalink}}">
+        <a class="btn btn-link nounderline copy-url-params" href="{{.NextInSection.Permalink}}">
             Previous - {{.NextInSection.Title}}
         </a>
     {{end}}
 
     {{if .PrevInSection}}
-        <a class="btn btn-link float-right " href="{{.PrevInSection.Permalink}}">
+        <a class="btn btn-link float-right copy-url-params" href="{{.PrevInSection.Permalink}}">
             Next - {{.PrevInSection.Title}}
         </a>
     {{end}}
