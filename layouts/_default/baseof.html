@@ -112,29 +112,28 @@
       }
 
       function addCopyButton(containerEl) {
-        const copyBtn = document.createElement("button");
-        copyBtn.className = "highlight-copy-btn copy button-outline float-left small text-uppercase";
-        copyBtn.textContent = "Copy";
-
-        const codeEl = containerEl.firstElementChild;
-        copyBtn.addEventListener('click', () => {
-          try {
-            const selection = selectText(codeEl);
-            document.execCommand('copy');
-            selection.removeAllRanges();
-
-            flashCopyMessage(copyBtn, 'Copied!')
-          } catch (e) {
-            console && console.log(e);
-            flashCopyMessage(copyBtn, 'Failed :\'(')
-          }
-        });
-        containerEl.appendChild(copyBtn);
-
-        // append clearfix
-        const clearFix = document.createElement('div')
-        clearFix.className = 'clearfix'
-        containerEl.parentNode.insertBefore(clearFix, containerEl.nextSibling)
+        if (containerEl.nextElementSibling.className != "nocopy") {
+            const copyBtn = document.createElement("button");
+            copyBtn.className = "highlight-copy-btn copy button-outline float-left small text-uppercase";
+            copyBtn.textContent = "Copy";
+            const codeEl = containerEl.firstElementChild;
+            copyBtn.addEventListener('click', () => {
+              try {
+                const selection = selectText(codeEl);
+                document.execCommand('copy');
+                selection.removeAllRanges();
+                flashCopyMessage(copyBtn, 'Copied!')
+              } catch (e) {
+                console && console.log(e);
+                flashCopyMessage(copyBtn, 'Failed :\'(')
+              }
+            });
+            containerEl.appendChild(copyBtn);
+            // append clearfix
+            const clearFix = document.createElement('div')
+            clearFix.className = 'clearfix'
+            containerEl.parentNode.insertBefore(clearFix, containerEl.nextSibling)
+        }
       }
 
       function appendUrlParams(linkEl) {
